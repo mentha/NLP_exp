@@ -53,6 +53,9 @@ def getWord(s, t):
     return s[t[0]:t[1] + 1]
 
 class Scissor:
+    '''
+    Chinese sentences cutter
+    '''
     def __init__(self, wordfreq = {
                 '^': 9,
                 '$': 9,
@@ -75,6 +78,15 @@ class Scissor:
             beta = 1e-30,
             theta = 1e-40
             ):
+        '''
+        Construct a new Scissor class
+
+        :param wordfreq: Dictionary of words' occurence in the corpus
+        :param interword: Dictionary of relative frequencies of one word appearing after another in the corpus
+        :param alpha: Possibility of a word appearing after another when such a relationship is not found in interword
+        :param beta: Possibility of a word appearing after a character
+        :param theta: Possibility of a character appearing after a character
+        '''
         self.wordfreq = wordfreq
         self.interword = interword
         self.alpha = alpha
@@ -98,6 +110,9 @@ class Scissor:
                 return self.theta
             raise
     def graphGen(self, s):
+        '''
+        Find every possible routes from the beginning to the end
+        '''
         g = nx.DiGraph()
         for i in range(len(s) - 1):
             g.add_edge((i, i), (i + 1, i + 1))
@@ -118,6 +133,9 @@ class Scissor:
                         g.add_edge(n, (j, j))
         return g
     def graphTag(self, s, g):
+        '''
+        Add weight to routes
+        '''
         for e in sorted(g.edges()):
             p, c = (getWord(s, i) for i in e)
             pn, cn = e
@@ -137,9 +155,21 @@ class Scissor:
             g[pn][cn]['weight'] = w
         return g
     def Graph(self, s):
+        '''
+        Generate weighted graph of routes
+        :param s: String of chinese characters to be analysed
+
+        :return: Weighted networkx.DiGraph of routes
+        '''
         s = '^' + s + '$'
         return self.graphTag(s, self.graphGen(s))
     def Cut(self, s):
+        '''
+        Cut sentences into lists
+
+        :param s: String of chinese characters to be cut
+        :return: List of cutted words
+        '''
         g = self.Graph(s)
         for e in g.edges():
             f, t = e
