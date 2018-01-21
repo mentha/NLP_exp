@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+# -*- coding: utf-8 -*-
 import networkx as nx
 import math
 import re
@@ -244,8 +244,10 @@ class Scissor:
 
 if __name__ == '__main__':
     import json
+    import lzma
     from subprocess import Popen, PIPE
-    s = Scissor(json.load(open('wf.json')), json.load(open('iw.json')))
+    s = Scissor(json.loads(lzma.open('wf.json.xz').read().decode('UTF-8')), \
+                json.loads(lzma.open('iw.json.xz').read().decode('UTF-8')))
     while True:
         print('Enter: ', end = '')
         v = input()

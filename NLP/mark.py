@@ -84,7 +84,10 @@ class  Mark:
         return Wordtag
 
 if __name__ == '__main__':
+    import lzma
     import json
-    M = Mark(json.load(open('pos.json')), json.load(open('bposf.json')),json.load(open('iposf.json')))
-    print(M.sentemark(['今天','天气','晴朗']))
+    M = Mark(json.loads(lzma.open('pos.json.xz').read().decode('utf-8')), \
+             json.loads(lzma.open('bposf.json.xz').read().decode('utf-8')),\
+             json.loads(lzma.open('iposf.json.xz').read().decode('utf-8')))
+    print(M.Sentemark(['今天','天气','晴朗']))
     
