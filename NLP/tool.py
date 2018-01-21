@@ -13,7 +13,7 @@ class Tool:
         self.S = Scissor(json.loads(lzma.open('NLP/wf.json.xz').read().decode('UTF-8')), \
                 json.loads(lzma.open('NLP/iw.json.xz').read().decode('UTF-8')))
         
-    def cut_mark(self, s):
+    def Cut_mark(self, s):
         '''
         对一个字符串进行分词和词性标注
         :param s: 待处理的字符串
@@ -30,7 +30,7 @@ if __name__ =='__main__':
     t = Tool()
     print('Enter: ')
     s = input()
-    print(t.cut_mark(s))
+    t.Cut_mark(s)
 
 
 
