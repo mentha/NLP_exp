@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class  Mark:
     '''
     词性标注
@@ -30,9 +32,10 @@ class  Mark:
         获取list中第一个词的词性
         :param word:第一个词
         :param Wordtag:和输入list对应的词性list
-        :return:第一个词的所有可能词性
+        :return:第一个词对应的词性
         '''
         try:
+            #找出最有可能的词性，加在Wordtag中
             max = 0
             for tag in self.dic_first[word]:
                 p = self.dic_first[word][tag]
@@ -56,11 +59,11 @@ class  Mark:
         :param index:上一个词在list中的位置
         :param folword:待查询的词
         :param Wordtag:同上
-        :return:
         '''
         wordtypes = self.Wordtype(folword)
         taglead = Wordtag[index]
         max = 0
+        #找出最有可能的词性，将其加在Wordtag中
         for wordtype in wordtypes:
             try:
                 p = self.dic_hmm[taglead][wordtype]
