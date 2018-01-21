@@ -12,6 +12,7 @@ def main():
             wl = l.split()
             for w in wl:
                 w = '/'.join(w.split('/')[:-1])
+                # '2/3' in '2/3/m'
                 if not w in wf:
                     wf[w] = 0
                 wf[w] += 1

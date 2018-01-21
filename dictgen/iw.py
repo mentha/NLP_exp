@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
-# Word freq
+# Inter-Word freq
 
 import json
 
 def main():
     iw = {}
     def addiw(p, n):
+        'Add word pair to dict iw'
         if p == '。':
             p = '^'
         if n == '。':
@@ -23,6 +24,7 @@ def main():
             pw = '^'
             for w in wl:
                 w = '/'.join(w.split('/')[:-1])
+                # '2/3' in '2/3/m'
                 addiw(pw, w)
                 pw = w
             addiw(pw, '$')
@@ -30,6 +32,7 @@ def main():
         pass
     json.dump(iw, open('iwc.json', 'w'), indent=4)
     for p in iw:
+        # normalize
         s = 0
         for w in iw[p]:
             s += iw[p][w]
