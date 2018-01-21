@@ -117,8 +117,6 @@ class Scissor:
         Find every possible routes from the beginning to the end
         '''
         g = nx.DiGraph()
-        for i in range(len(s) - 1):
-            g.add_edge((i, i), (i + 1, i + 1))
         if el is None:
             el = [[] for _ in s]
         elif isinstance(el, list):
@@ -129,6 +127,12 @@ class Scissor:
         elif isinstance(el, list):
             bl.clear()
             bl.extend([[] for _ in s])
+        for i in range(len(s) - 1):
+            p = (i, i)
+            n = (i + 1, i + 1)
+            g.add_edge(p, n)
+            bl[i].append(p)
+            el[i + 1].append(n)
         for i in range(len(s) - 1):
             for j in range(i + 2, len(s)):
                 if s[i:j] in self.wordfreq:
