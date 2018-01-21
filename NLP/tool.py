@@ -7,11 +7,11 @@ class Tool:
         '''
         对分词类和词性标注类进行初始化
         '''
-        self.M = Mark(json.loads(lzma.open('pos.json.xz').read().decode('utf-8')), \
-             json.loads(lzma.open('bposf.json.xz').read().decode('utf-8')),\
-             json.loads(lzma.open('iposf.json.xz').read().decode('utf-8')))
-        self.S = Scissor(json.loads(lzma.open('wf.json.xz').read().decode('UTF-8')), \
-                json.loads(lzma.open('iw.json.xz').read().decode('UTF-8')))
+        self.M = Mark(json.loads(lzma.open('NLP/pos.json.xz').read().decode('utf-8')), \
+             json.loads(lzma.open('NLP/bposf.json.xz').read().decode('utf-8')), \
+             json.loads(lzma.open('NLP/iposf.json.xz').read().decode('utf-8')))
+        self.S = Scissor(json.loads(lzma.open('NLP/wf.json.xz').read().decode('UTF-8')), \
+                json.loads(lzma.open('NLP/iw.json.xz').read().decode('UTF-8')))
         
     def cut_mark(self, s):
         '''
