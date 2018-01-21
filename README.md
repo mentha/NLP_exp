@@ -35,7 +35,7 @@
 
 ```
 >>> from NLP import Mark
->>> m = Mark(json.loads(lzma.open('pos.json.xz').read().decode('utf-8')), json.loads(lzma.open('bposf.json.xz').read().decode('utf-8')), json.loads(lzma.open('iposf.json.xz').read().decode('utf-8')))
+>>> m = Mark(json.loads(lzma.open('NLP/pos.json.xz').read().decode('utf-8')), json.loads(lzma.open('NLP/bposf.json.xz').read().decode('utf-8')), json.loads(lzma.open('NLP/iposf.json.xz').read().decode('utf-8')))
 >>> m.Sentemark(['自然', '语言', '通常', '是', '指', '一种', '自然', '地', '随', '文化', '演化', '的', '语言', '。'])
 ['n', 'n', 'd', 'vshi', 'v', 'mq', 'n', 'ude2', 'p', 'n', 'vn', 'ude1', 'n', 'w']
 ```
