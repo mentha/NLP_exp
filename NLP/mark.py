@@ -6,8 +6,8 @@ class  Mark:
     '''
     def __init__(self, dic_word = {}, dic_first = {}, dic_hmm = {}):
         '''
-        构造一个词性标注类，对list进行词性标注
-        :param dic_word:查询一个字所有词性的词典
+        构造一个词性标注类，对输入的list进行词性标注
+        :param dic_word:查询一个词所有词性的词典
         :param dic_first:查询第一个词相关信息的词典
         :param dic_hmm:包含条件概率信息的词典
         '''
@@ -29,7 +29,7 @@ class  Mark:
         
     def Firstword(self, word, Wordtag):
         '''
-        获取list中第一个词的词性
+        获取输入list中第一个词的词性
         :param word:第一个词
         :param Wordtag:和输入list对应的词性list
         :return:第一个词对应的词性
@@ -56,7 +56,7 @@ class  Mark:
     def Wordmark(self, index, folword, Wordtag):
         '''
         用HMM模型进行词性标注
-        :param index:上一个词在list中的位置
+        :param index:上一个词在输入list中的位置
         :param folword:待查询的词
         :param Wordtag:同上
         '''
@@ -76,7 +76,7 @@ class  Mark:
 
     def Sentemark(self, wordseq = []):
         """
-        对一个list进行分词
+        对一个输入list进行词性标注
         :param wordseq:输入的list
         :return:Wordtag
         """
