@@ -55,7 +55,7 @@ class  Mark:
                 Wordtag.append(ptag)
     def Wordmark(self, index, folword, Wordtag):
         '''
-        用HMM模型进行词性标注
+        用HMM进行词性标注
         :param index:上一个词在输入list中的位置
         :param folword:待查询的词
         :param Wordtag:同上
