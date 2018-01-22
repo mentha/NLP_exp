@@ -20,7 +20,7 @@ def shortest(g, f, t):
     return nx.shortest_path(g, f, t, 'weight')
 
 def dotGraph(g, s):
-     'dot graph generation'
+    'dot graph generation'
     s = '^' + s + '$'
     r = ''
     r += 'digraph {\n'
