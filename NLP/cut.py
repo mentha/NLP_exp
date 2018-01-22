@@ -20,6 +20,7 @@ def shortest(g, f, t):
     return nx.shortest_path(g, f, t, 'weight')
 
 def dotGraph(g, s):
+     'dot graph generation'
     s = '^' + s + '$'
     r = ''
     r += 'digraph {\n'
@@ -32,6 +33,7 @@ def dotGraph(g, s):
         if n[0] != n[1]:
             r += '\t' + genc(n) + ' [ label="{}" ]'.format(s[n[0]:n[1] + 1]) + '\n'
     for e in g.edges():
+        # prepare weights
         p, c = e
         w = g[p][c]['weight']
         g[p][c]['rweight'] = w
@@ -43,6 +45,7 @@ def dotGraph(g, s):
             g[p][e]['selected'] = 1
         p = e
     for e in g.edges():
+        # add edges
         p, c = e
         w = g[p][c]['weight']
         rw = g[p][c]['rweight']
@@ -78,6 +81,7 @@ class Scissor:
                     'ef': 6
                     }
             },
+            #alpha, beta, theta are quit small
             alpha = 1e-20,
             beta = 1e-30,
             theta = 1e-40
@@ -103,7 +107,9 @@ class Scissor:
         return w in self.wordfreq
 
     def possChar2Char(self, p, c):
+        'possbility of char to char'
         return self.alpha
+    
     def possChar2Word(self, p, c):
         return self.beta
 
@@ -139,6 +145,7 @@ class Scissor:
             g.add_edge(p, n)
             bl[i].append(p)
             el[i + 1].append(n)
+        #find words 
         for i in range(len(s) - 1):
             for j in range(i + 2, len(s)):
                 if s[i:j] in self.wordfreq:
